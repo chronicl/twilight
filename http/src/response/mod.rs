@@ -504,7 +504,7 @@ impl<'a> Iterator for HeaderIter<'a> {
 /// let response = client.message(channel_id, message_id).exec().await?;
 /// let bytes = response.bytes().await?;
 ///
-/// println!("bytes of the body: {:?}", bytes);
+/// println!("bytes of the body: {bytes:?}");
 /// # Ok(()) }
 /// ```
 ///

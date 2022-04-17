@@ -254,7 +254,7 @@ pub fn load_track(
 ) -> Result<Request<&'static [u8]>, HttpError> {
     let identifier =
         percent_encoding::percent_encode(identifier.as_ref().as_bytes(), NON_ALPHANUMERIC);
-    let url = format!("http://{}/loadtracks?identifier={}", address, identifier);
+    let url = format!("http://{address}/loadtracks?identifier={identifier}");
 
     let mut req = Request::get(url);
 

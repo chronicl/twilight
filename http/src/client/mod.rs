@@ -2403,8 +2403,8 @@ impl Client {
         let protocol = if self.use_http { "http" } else { "https" };
         let host = self.proxy.as_deref().unwrap_or("discord.com");
 
-        let url = format!("{}://{}/api/v{}/{}", protocol, host, API_VERSION, path);
-        tracing::debug!("URL: {:?}", url);
+        let url = format!("{protocol}://{host}/api/v{API_VERSION}/{path}");
+        tracing::debug!("URL: {url:?}");
 
         let mut builder = hyper::Request::builder().method(method.to_http()).uri(&url);
 

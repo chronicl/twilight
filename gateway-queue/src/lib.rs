@@ -132,7 +132,7 @@ async fn waiter(mut rx: UnboundedReceiver<Sender<()>>) {
     const DUR: Duration = Duration::from_secs(6);
     while let Some(req) = rx.recv().await {
         if let Err(_source) = req.send(()) {
-            tracing::warn!("skipping, send failed: {:?}", _source);
+            tracing::warn!("skipping, send failed: {_source:?}");
         }
         sleep(DUR).await;
     }
@@ -147,11 +147,11 @@ impl Queue for LocalQueue {
             let (tx, rx) = oneshot::channel();
 
             if let Err(_source) = self.0.send(tx) {
-                tracing::warn!("skipping, send failed: {:?}", _source);
+                tracing::warn!("skipping, send failed: {_source:?}");
                 return;
             }
 
-            tracing::info!("shard {}/{} waiting for allowance", _id, _total);
+            tracing::info!("shard {_id}/{_total} waiting for allowance");
 
             let _ = rx.await;
         })
