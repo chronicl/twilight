@@ -32,8 +32,8 @@ jobs:
           profile: minimal
           override: true
 
-      - name: Cache dependencies
-        uses: Swatinem/rust-cache@v1
+      #- name: Cache dependencies
+      #  uses: Swatinem/rust-cache@v1
 
       - name: Output processor info
         run: cat /proc/cpuinfo
