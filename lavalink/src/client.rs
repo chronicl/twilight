@@ -250,7 +250,7 @@ impl Lavalink {
             }
         };
 
-        tracing::debug!("getting player for guild {}", guild_id);
+        tracing::debug!("getting player for guild {guild_id}");
 
         let player = self.player(guild_id).await?;
 
@@ -261,7 +261,7 @@ impl Lavalink {
             source: Some(Box::new(source)),
         })?;
 
-        tracing::debug!("sent voice update for guild {}", guild_id);
+        tracing::debug!("sent voice update for guild {guild_id}");
 
         Ok(())
     }

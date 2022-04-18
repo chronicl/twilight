@@ -545,7 +545,7 @@ impl Connection {
         let event = match serde_json::from_str(&text) {
             Ok(event) => event,
             Err(_) => {
-                tracing::warn!("unknown message from lavalink node: {}", text);
+                tracing::warn!("unknown message from lavalink node: {text}");
 
                 return Ok(true);
             }

@@ -129,7 +129,7 @@ use twilight_validate::{
 /// use twilight_http::Client;
 ///
 /// let bearer = env::var("BEARER_TOKEN")?;
-/// let token = format!("Bearer {}", bearer);
+/// let token = format!("Bearer {bearer}");
 ///
 /// let client = Client::new(token);
 /// # Ok(()) }

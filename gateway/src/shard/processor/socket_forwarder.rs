@@ -53,10 +53,10 @@ impl SocketForwarder {
                 // `rx` future finished first.
                 Either::Left((Either::Left((maybe_msg, _)), _)) => {
                     if let Some(msg) = maybe_msg {
-                        tracing::trace!("sending message: {}", msg);
+                        tracing::trace!("sending message: {msg}");
 
                         if let Err(_source) = self.stream.send(msg).await {
-                            tracing::warn!("sending failed: {}", _source);
+                            tracing::warn!("sending failed: {_source}");
 
                             break;
                         }
@@ -76,7 +76,7 @@ impl SocketForwarder {
                         }
                     }
                     Some(Err(_source)) => {
-                        tracing::warn!("socket errored: {}", _source);
+                        tracing::warn!("socket errored: {_source}");
 
                         break;
                     }

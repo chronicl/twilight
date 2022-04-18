@@ -288,7 +288,7 @@ impl<T> Response<T> {
     /// let response = client.current_user().exec().await?;
     /// let text = response.text().await?;
     ///
-    /// println!("body: {}", text);
+    /// println!("body: {text}");
     /// # Ok(()) }
     /// ```
     ///
@@ -454,7 +454,7 @@ impl Response<MemberListBody> {
 /// let mut headers = response.headers();
 ///
 /// while let Some((name, value)) = headers.next() {
-///     println!("{}: {}", name, String::from_utf8_lossy(value));
+///     println!("{name}: {}", String::from_utf8_lossy(value));
 /// }
 /// # Ok(()) }
 /// ```
@@ -768,7 +768,7 @@ impl Future for MemberListFuture {
 /// let response = client.message(channel_id, message_id).exec().await?;
 /// let text = response.text().await?;
 ///
-/// println!("body: {}", text);
+/// println!("body: {text}", text);
 /// # Ok(()) }
 /// ```
 ///

@@ -99,7 +99,7 @@ impl<T> Id<T> {
     ///
     /// const ID: Id<GenericMarker> = Id::new(123);
     ///
-    /// println!("id: {}", ID);
+    /// println!("id: {ID}");
     /// ```
     ///
     /// # Panics

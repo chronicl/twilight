@@ -619,7 +619,7 @@ impl ShardProcessor {
         }
 
         if let Err(_source) = self.session.heartbeat() {
-            tracing::warn!("error sending heartbeat; reconnecting: {}", _source);
+            tracing::warn!("error sending heartbeat; reconnecting: {_source}");
 
             self.emit_disconnected(None, None).await;
 
@@ -631,7 +631,7 @@ impl ShardProcessor {
         #[cfg(feature = "metrics")]
         metrics::counter!("GatewayEvent", 1, "GatewayEvent" => "Hello");
 
-        tracing::debug!("got hello with interval {}", interval);
+        tracing::debug!("got hello with interval {interval}");
 
         if self.session.stage() == Stage::Resuming && self.resume.is_some() {
             // Safe to unwrap so here as we have just checked that

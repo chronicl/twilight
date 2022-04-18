@@ -30,7 +30,7 @@ fn criterion_benchmark(c: &mut Criterion) {
 
     for command in command_counts {
         for permission in permission_counts {
-            let name = format!("{} commands, {} permissions", command, permission);
+            let name = format!("{command} commands, {permission} permissions");
 
             c.bench_function(&name, |b| {
                 let list = commands(command, permission);
