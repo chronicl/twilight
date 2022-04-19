@@ -542,13 +542,12 @@ impl Connection {
             }
         };
 
-        let event = match serde_json::from_str(&text) {
-            Ok(event) => event,
-            Err(_) => {
-                tracing::warn!("unknown message from lavalink node: {text}");
+        let event = if let Ok(event) = serde_json::from_str(&text) {
+            event
+        } else {
+            tracing::warn!("unknown message from lavalink node: {text}");
 
-                return Ok(true);
-            }
+            return Ok(true);
         };
 
         match &event {
@@ -567,16 +566,15 @@ impl Connection {
     }
 
     async fn player_update(&self, update: &PlayerUpdate) -> Result<(), NodeError> {
-        let player = match self.players.get(&update.guild_id) {
-            Some(player) => player,
-            None => {
-                tracing::warn!(
-                    "invalid player update for guild {}: {update:?}",
-                    update.guild_id,
-                );
+        let player = if let Some(player) = self.players.get(&update.guild_id) {
+            player
+        } else {
+            tracing::warn!(
+                "invalid player update for guild {}: {update:?}",
+                update.guild_id,
+            );
 
-                return Ok(());
-            }
+            return Ok(());
         };
 
         player.set_position(update.state.position.unwrap_or(0));
