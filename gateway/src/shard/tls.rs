@@ -149,12 +149,7 @@ impl TlsContainer {
             })?;
 
             for cert in certs {
-                roots
-                    .add(&rustls_tls::Certificate(cert.0))
-                    .map_err(|err| TlsError {
-                        kind: TlsErrorType::NativeCerts,
-                        source: Some(Box::new(err)),
-                    })?;
+                roots.add(&rustls_tls::Certificate(cert.0)).ok();
             }
         }
 
