@@ -381,7 +381,7 @@ mod tests {
                 Token::Str("name"),
                 Token::Str("permissions"),
                 Token::Str("type"),
-                Token::U8(CommandType::ChatInput as u8),
+                Token::U8(CommandType::ChatInput.into()),
                 Token::StructEnd,
             ],
         )
@@ -415,7 +415,7 @@ mod tests {
                 Token::Str("name"),
                 Token::Str("photo"),
                 Token::Str("type"),
-                Token::U8(CommandType::ChatInput as u8),
+                Token::U8(CommandType::ChatInput.into()),
                 Token::Str("options"),
                 Token::Seq { len: Some(1) },
                 Token::Struct {
